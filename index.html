@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="row">
+            <div class="card">
+              <div class="card-contant">
+                  <div class="image">
+                      <img src="download.jpg" alt="">
+                  </div>
+                  <div class="card-heading">
+                      <h1>Card !</h1>
+                  </div>
+                  <div class="card-btn">
+                      <button>View</button>
+                      <button>Buy</button>
+
+                  </div>
+              </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-contant">
+                    <div class="image">
+                        <img src="download.jpg" alt="">
+                    </div>
+                    <div class="card-heading">
+                        <h1>Card !</h1>
+                    </div>
+                    <div class="card-btn">
+                        <button>View</button>
+                        <button>Buy</button>
+  
+                    </div>
+                </div>
+              </div>
+            
+              <div class="card">
+                <div class="card-contant">
+                    <div class="image">
+                        <img src="download.jpg" alt="">
+                    </div>
+                    <div class="card-heading">
+                        <h1>Card !</h1>
+                    </div>
+                    <div class="card-btn">
+                        <button>View</button>
+                        <button>Buy</button>
+  
+                    </div>
+                </div>
+              </div>
+            
+              <div class="card">
+                <div class="card-contant">
+                    <div class="image">
+                        <img src="download.jpg" alt="">
+                    </div>
+                    <div class="card-heading">
+                        <h1>Card !</h1>
+                    </div>
+                    <div class="card-btn">
+                        <button>View</button>
+                        <button>Buy</button>
+  
+                    </div>
+                </div>
+              </div>
+              
+        </div>
+    </main>
+    <video id="video" autoplay style="width: 50%;height: 40vh;" muted></video>
+</body>
+<script>
+    navigator.mediaDevices.getUserMedia({audio:true,video:true}).then(stream => {
+        document.getElementById('video').srcObject = stream;
+    }).catch(err => {
+        console.log(err);
+    
+    });
+    </script>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #google_tarnslate {
+        display: none;
+    }
+
+    .skiptranslate {
+        display: none;
+        height: 0;
+    }
+</style>
+
+<body>
+    <h1 id="heading">hello world</h1>
+    <textarea id="translate" cols="30" rows="10"></textarea>
+    <div id="google_tarnslate"></div>
+    <div class="flag">
+        <a href="#" class="flag_link eng" data-lang="en">Eng<img class="img-fluid" src="./img/flag-eng.png" alt=""></a>
+        <a href="#" class="flag_link taj" data-lang="es">ES<img class="img-fluid" src="./img/flag-taj.png" alt=""></a>
+        <a href="#" class="flag_link rus" data-lang="ru">RS<img class="img-fluid" src="./img/flag-rus.png" alt=""></a>
+        <a href="#" class="flag_link rus" data-lang="ur">Ur<img class="img-fluid" src="./img/flag-rus.png" alt=""></a>
+
+    </div>
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script>
+        const textarea = document.getElementById("translate");
+        const h1 = document.getElementById('heading');
+
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement('google_tarnslate', {
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+
+            });
+        }
+        var flags = document.getElementsByClassName('flag_link');
+        Array.prototype.forEach.call(flags, function (e) {
+            e.addEventListener('click', function () {
+                h1.innerText = document.getElementById("translate").value;
+                var lang = e.getAttribute('data-lang');
+                var languageSelect = document.querySelector("select.goog-te-combo");
+                languageSelect.value = lang;
+                languageSelect.dispatchEvent(new Event("change"));
+                console.log(languageSelect.value)
+            });
+        });
+    </script>
+
+</body>
+</html>
